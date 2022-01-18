@@ -33,7 +33,7 @@ export default function HeaderTime({start_time}){
                 renderer={renderer}/>
               </Grid>
               <Grid item>
-                <Typography variant="h5" color="initial">TIME REMAINING</Typography>
+                <Typography variant="h5" color="initial" align='center'>TIME REMAINING</Typography>
               </Grid>
             </Grid>
         </div>
