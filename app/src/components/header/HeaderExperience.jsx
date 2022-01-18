@@ -10,7 +10,7 @@ export default function HeaderExperience({experience}){
                   <Typography variant="h1" color="initial">{experience}xp</Typography>
               </Grid>
               <Grid item>
-                  <Typography variant="h5" color="initial">TOTAL XP</Typography>
+                  <Typography variant="h5" color="initial" align='center'>TOTAL XP</Typography>
               </Grid>
             </Grid>
         </div>
