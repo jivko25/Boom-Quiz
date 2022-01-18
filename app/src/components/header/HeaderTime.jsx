@@ -1,5 +1,7 @@
+import { Grid } from '@mui/material';
 import Typography from '@mui/material/Typography'
 import Countdown from 'react-countdown';
+
 
 
 
@@ -22,11 +24,18 @@ export default function HeaderTime({start_time}){
 
     return(
         <div>
-            <Countdown
-            date={Date.now() + start_time}
-            intervalDelay={10}
-            precision={1}
-            renderer={renderer}/>
+            <Grid container direction={"column"}>
+              <Grid item>
+                <Countdown
+                date={Date.now() + start_time}
+                intervalDelay={10}
+                precision={1}
+                renderer={renderer}/>
+              </Grid>
+              <Grid item>
+                <Typography variant="h5" color="initial">TIME REMAINING</Typography>
+              </Grid>
+            </Grid>
         </div>
     )
 }
