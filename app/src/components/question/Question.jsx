@@ -19,6 +19,9 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
         end : {
             y: -250,
             opacity:0
+        },
+        wrong : {
+            rotate: [0, 0, 10, 10, -10, -10,10, 10, -10, -10,10, 10, -10, -10,10, 10, -10, -10, 0]
         }
     }
 
@@ -27,12 +30,12 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
             if(answer == question.answer){
                 setFinalCorrectAnswers(finalCorrectAnswers + 1)
                 onAddExperience(question.xp)
+                setIsOpen(true);
+                setTimeout(() => {
+                onNextQuestion()
+                    setIsOpen(false)
+                }, 1000);
             }
-            setIsOpen(true)
-            setTimeout(() => {
-            onNextQuestion()
-                setIsOpen(false)
-            }, 1000);
         }
      }
      console.log('refresh');
