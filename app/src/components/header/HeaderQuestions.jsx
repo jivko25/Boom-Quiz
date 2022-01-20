@@ -7,10 +7,10 @@ export default function HeaderQuestions({questions, currentQuestion}){
         <div>
             <Grid container direction='column' justifyContent={"center"}>
                 <Grid item>
-                    <Typography variant="h1" color="initial">{currentQuestion}/{questions}</Typography>
+                    <Typography variant="h1" color="white">{currentQuestion}/{questions.length}</Typography>
                 </Grid>
                 <Grid item >
-                    <Typography variant="h5" color="initial" align='center'>QUESTIONS</Typography>
+                    <Typography variant="h5" color="white" align='center'>QUESTIONS</Typography>
                 </Grid>
             </Grid>
         </div>

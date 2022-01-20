@@ -3,11 +3,12 @@ import HeaderQuestions from "./HeaderQuestions";
 import HeaderTime from "./HeaderTime";
 import Grid from '@mui/material/Grid'
 import { Container } from "@mui/material";
+import styles from './Header.module.scss';
 
 
 export default function Header({questions, currentQuestion, start_time, experience}){
     return(
-        <div>
+        <div className={styles["header-wrapper"]}>
             <Container>
                 <Grid container justifyContent={"space-between"}>
                     <Grid item>
