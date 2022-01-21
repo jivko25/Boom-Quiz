@@ -8,6 +8,7 @@ import {motion} from 'framer-motion';
 
 
 export default function FinalPoints({tasks, finalCorrectAnswers}){
+
     return(
       <motion.div initial={{y: -1000}} animate={{y : 0}} transition={{duration: 3}} className={styles.wrapper}>
       <Grid container spacing={1} direction={'column'}>

@@ -8,7 +8,7 @@ import {motion} from 'framer-motion';
 export default function PastQuestionItem({question}){
     if(question)
     return(
-        <motion.div  className={styles.wrapper}>
+        <motion.div initial={{opacity: 0}} animate={{opacity : 0.2}} transition={{duration: 3}} className={styles.wrapper}>
             <Grid container direction={'row'} justifyContent={'space-between'}>
               <Grid item>
                     <Grid container direction={'column'}>
