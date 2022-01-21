@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from 'react'
-import {TaskContext } from '../../src/components/common/TaskProvider'
+import { useContext, useEffect, useRef, useState } from 'react'
+import {StartTimeContext, TaskContext } from '../../src/components/common/TaskProvider'
 import Header from '../../src/components/header/Header';
 import Question from '../../src/components/question/Question';
 import beautify from 'simply-beautiful'
@@ -11,8 +11,10 @@ export default function Home() {
   const [experience, setExperience] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState({});
   const [questionIndex, setQuestionIndex] = useState(0);
+  const [startTime, setStartTime] = useContext(StartTimeContext);
 
   const router = useRouter();
+  const firstRender = useRef(true);
 
   const onNextQuestion = () => {
     if(questionIndex + 1 >= tasks.length){
@@ -26,6 +28,10 @@ export default function Home() {
 
   useEffect(() => {
     setCurrentQuestion(tasks[questionIndex])
+    if(firstRender.current){
+      firstRender.current = false;
+      setStartTime(Date.now());
+    }
   }, [questionIndex])
 
 

@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Link to deployed project: https://boom-quiz-zeta.vercel.app/
+
 First, run the development server:
 
 ```bash
