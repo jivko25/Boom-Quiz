@@ -10,6 +10,7 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
     const [finalCorrectAnswers, setFinalCorrectAnswers] = useContext(CorrectAnswersContext);
     const [experience, setExperience] = useContext(ExperienceContext);
     const [isOpen, setIsOpen] = useState(false);
+    const [isAnswerWrong, setIsAnswerWrong] = useState(false);
 
     const animations = {
         start : {
@@ -38,6 +39,12 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
                 }, 1000);
                 setAnswer('');
             }
+            else{
+                setIsAnswerWrong(true);
+                setTimeout(() => {
+                    setIsAnswerWrong(false);
+                }, 500);
+            }
         }
      }
     return(
@@ -64,7 +71,7 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
                     </Grid>
                     <Grid item xs={10}>
                     <TextField
-                        color="primary"
+                        color={isAnswerWrong ? "error" : "primary"}
                         variant='outlined'
                         value={answer}
                         onChange={(e) => {setAnswer(e.target.value)}}
@@ -72,7 +79,7 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
                         className={styles.input}
                         InputProps={{
                         endAdornment: (
-                            <Typography variant="p" color="primary" style={{whiteSpace: 'nowrap'}}><span style={{fontSize : '20px'}}>&#8629;</span> PRESS ENTER TO SUBMIT</Typography>
+                            <Typography variant="p" color={isAnswerWrong ? "error" : "primary"} style={{whiteSpace: 'nowrap'}}><span style={{fontSize : '20px'}}>&#8629;</span> PRESS ENTER TO SUBMIT</Typography>
                         ),
                         }}
                         fullWidth
