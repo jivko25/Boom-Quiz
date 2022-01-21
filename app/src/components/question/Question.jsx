@@ -42,7 +42,6 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
      console.log('refresh');
     return(
             <motion.div
-                        className="container"
                         initial={{y:250, opacity:0}}
                         animate={!isOpen ? animations.start : animations.end}
                         exit={animations.end}
