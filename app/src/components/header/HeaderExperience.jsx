@@ -18,7 +18,7 @@ export default function HeaderExperience({experience}){
         for(let i = xp; i <= exp; i++){
             setTimeout(() => {
                 setXp(i)
-            }, 100);
+            }, 300);
         }
     }, [exp])
     return(
