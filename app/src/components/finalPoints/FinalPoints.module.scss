@@ -1,0 +1,16 @@
+@use '../../styles/colors.scss';
+
+.wrapper{
+    margin: auto;
+    position: relative;
+    top: 30vh;
+}
+
+.info{
+    margin: auto;
+    position: relative;
+    padding: 15px;
+    width: 400px;
+    height: 200px;
+    background-color: colors.$secondary_main;
+}
