@@ -1,15 +1,16 @@
-import { Container, Grid, Typography, InputBase, Input, InputAdornment, TextField} from "@mui/material";
+import { Container, Grid, Typography, TextField} from "@mui/material";
 import styles from './Question.module.scss';
-import SearchIcon from '@mui/icons-material/Search';
 import { useContext, useState } from "react";
-import { CorrectAnswersContext, TaskContext } from "../common/TaskProvider";
+import { CorrectAnswersContext, ExperienceContext} from "../common/TaskProvider";
 import {motion} from 'framer-motion'
 
 
 export default function Question({question, onNextQuestion, onAddExperience, onCorrect}){
     const [answer, setAnswer] = useState('');
     const [finalCorrectAnswers, setFinalCorrectAnswers] = useContext(CorrectAnswersContext);
+    const [experience, setExperience] = useContext(ExperienceContext);
     const [isOpen, setIsOpen] = useState(false);
+    const [isAnswerWrong, setIsAnswerWrong] = useState(false);
 
     const animations = {
         start : {
@@ -30,6 +31,7 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
             if(answer == question.answer){
                 setFinalCorrectAnswers(finalCorrectAnswers + 1)
                 onAddExperience(question.xp)
+                setExperience(experience + question.xp)
                 setIsOpen(true);
                 setTimeout(() => {
                 onNextQuestion()
@@ -37,9 +39,14 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
                 }, 1000);
                 setAnswer('');
             }
+            else{
+                setIsAnswerWrong(true);
+                setTimeout(() => {
+                    setIsAnswerWrong(false);
+                }, 500);
+            }
         }
      }
-     console.log('refresh');
     return(
             <motion.div
                         initial={{y:250, opacity:0}}
@@ -59,19 +66,20 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item>
+                    <Grid item className={styles.content}>
                         <img src={question?.content}/>
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={10}>
                     <TextField
-                        color="primary"
+                        color={isAnswerWrong ? "error" : "primary"}
                         variant='outlined'
                         value={answer}
                         onChange={(e) => {setAnswer(e.target.value)}}
                         onKeyDown={keyPress}
+                        className={styles.input}
                         InputProps={{
                         endAdornment: (
-                            <Typography variant="p" color="primary" style={{whiteSpace: 'nowrap'}}><span style={{fontSize : '20px'}}>&#8629;</span> PRESS ENTER TO SUBMIT</Typography>
+                            <Typography variant="p" color={isAnswerWrong ? "error" : "primary"} style={{whiteSpace: 'nowrap'}}><span style={{fontSize : '20px'}}>&#8629;</span> PRESS ENTER TO SUBMIT</Typography>
                         ),
                         }}
                         fullWidth
