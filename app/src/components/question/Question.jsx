@@ -67,7 +67,11 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
                         </Grid>
                     </Grid>
                     <Grid item className={styles.content}>
-                        <img src={question?.content}/>
+                    <pre>
+                        <code className="language-javascript">
+                        {question.content}
+                        </code>
+                        </pre>
                     </Grid>
                     <Grid item xs={10}>
                     <TextField
