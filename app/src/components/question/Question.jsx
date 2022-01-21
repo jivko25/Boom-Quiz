@@ -35,6 +35,7 @@ export default function Question({question, onNextQuestion, onAddExperience, onC
                 onNextQuestion()
                     setIsOpen(false)
                 }, 1000);
+                setAnswer('');
             }
         }
      }
